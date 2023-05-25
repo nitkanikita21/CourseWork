@@ -29,5 +29,5 @@ export default function Footer() {
                 <p  className={styles.footer__links__link}>Test</p>
             </div>
         </footer>
-    </>
+    </>;
 }

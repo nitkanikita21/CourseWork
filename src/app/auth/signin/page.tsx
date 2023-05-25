@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Container from "@/components/auth/Container";
 import styles from "./page.module.scss";
@@ -6,8 +6,8 @@ import { getProviders, signIn, useSession } from "next-auth/react";
 import Button from "@/components/button/Button";
 
 
-import { FcGoogle } from 'react-icons/fc';
-import { BsGithub } from 'react-icons/bs';
+import { FcGoogle } from "react-icons/fc";
+import { BsGithub } from "react-icons/bs";
 
 export default async function RegisterPage(
     
@@ -32,5 +32,5 @@ export default async function RegisterPage(
                 </div>
             </Container>
         </div>
-    </>
+    </>;
 }

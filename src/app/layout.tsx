@@ -2,7 +2,7 @@
 
 import { Header } from "@/components/global/Header";
 import globalStyles from "../global.scss";
-import Footer from "@/components/global/Footer"
+import Footer from "@/components/global/Footer";
 import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
 import AuthProvider from "@/components/internal/AuthProvider";
@@ -24,5 +24,5 @@ export default async function RootLayout({
                 </div>
             </AuthProvider>
         </body>
-    </html>
+    </html>;
 }

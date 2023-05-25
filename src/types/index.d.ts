@@ -1,10 +1,11 @@
-declare module '*.scss' {
-    const content: Record<string, string>;
+declare module "*.scss" {
+    // eslint-disable-next-line init-declarations
+    const content: {[x: string]: string};
     export default content;
 }
 
 
-import NextAuth from "next-auth"
+import NextAuth from "next-auth";
 
 export declare module "next-auth" {
     /**
@@ -12,7 +13,7 @@ export declare module "next-auth" {
      */
     interface Session {
         user: {
-            /** The user's postal address. */
+            /** The user"s postal address. */
             address: string
         } & DefaultSession["user"]
     }

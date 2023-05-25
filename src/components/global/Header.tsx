@@ -1,13 +1,13 @@
 "use client";
 
-import Button from "../button/Button"
-import styles from "./Header.module.scss"
+import Button from "../button/Button";
+import styles from "./Header.module.scss";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export function Header() {
-    const { data: session, status } = useSession()
+    const { data: session, status } = useSession();
 
-    if (status == 'authenticated') {
+    if (status == "authenticated") {
         return <>
             <div className={styles.root}>
                 <h1 className={styles.logo}>
@@ -17,11 +17,11 @@ export function Header() {
 
                 </h1>
                 <Button className={styles.end_block} onClick={()=>{
-                    signOut()
+                    signOut();
                 }} >Вихід</Button>
 
             </div>
-        </>
+        </>;
     }
 
 
@@ -36,5 +36,5 @@ export function Header() {
             <Button className={styles.end_block} onClick={signIn} >Вхід</Button>
 
         </div>
-    </>
+    </>;
 }

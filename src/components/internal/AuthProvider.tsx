@@ -9,13 +9,13 @@ export default async function AuthProvider({
 }: {
     children: React.ReactNode
 }) {
-    const [session, setSession] = useState<Session | null>()
+    const [session, setSession] = useState<Session | null>();
 
     useEffect(()=>{
         (async ()=>{
-            setSession(await getSession())
-        })()
-    })
+            setSession(await getSession());
+        })();
+    });
 
-    return <SessionProvider session={session}>{children}</SessionProvider>
+    return <SessionProvider session={session}>{children}</SessionProvider>;
 }

@@ -4,7 +4,7 @@
 import Typing from "@/components/other/Typing";
 import styles from "./page.module.scss";
 import classNames from "classnames";
-import Button from "../components/button/Button"
+import Button from "../components/button/Button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Header } from "@/components/global/Header";
@@ -43,5 +43,5 @@ export default function Page() {
                 <p className={styles.about__desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eveniet illo veniam, error consequatur nemo? Possimus, adipisci hic harum doloribus optio in dolorem nam temporibus tenetur, nostrum doloremque maxime nulla?</p>
             </div>
         </section>
-    </>
+    </>;
 }

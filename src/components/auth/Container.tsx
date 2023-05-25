@@ -7,5 +7,5 @@ export default function AuthContainer({children}: {
 }) {
     return <div className={styles.root}>
         {children}
-    </div>
+    </div>;
 }
