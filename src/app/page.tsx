@@ -1,95 +1,47 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+import Typing from "@/components/other/Typing";
+import styles from "./page.module.scss";
+import classNames from "classnames";
+import Button from "../components/button/Button"
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Header } from "@/components/global/Header";
+import Footer from "@/components/global/Footer";
+import { signIn } from "next-auth/react";
 
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+export default function Page() {
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    return <>
+        <section className={classNames(styles.section, styles.hero)}>
+
+            <h2 className={styles.title}>CodeFactory</h2>
+            <div className={styles.desc}>
+                <h2 className={styles.desc__title}>
+                    <span>Почни свій шлях в <span className={styles.language}><Typing timeWait={5000} baseText="%text%" texts={["JavaScript", "C#", "Java", "Kotlin", "Python", "Rust", "C++", "Go", "PHP"]} /></span></span>
+                </h2>
+
+            </div>
+            <Button onClick={signIn} style="green" className={styles.hero_btns}>Почати вчитися</Button>
+        </section>
+
+        <section className={classNames(styles.section)}>
+            <div className={styles.learning}>
+                <h2 className={styles.learning__title}>Навчання</h2>
+                <Image className={styles.learning__media} src={"/root/learning/notebook.png"} alt="notebook" width={995 / 3} height={563 / 3}></Image>
+                <p className={styles.learning__desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eveniet illo veniam, error consequatur nemo? Possimus, adipisci hic harum doloribus optio in dolorem nam temporibus tenetur, nostrum doloremque maxime nulla?</p>
+            </div>
+        </section>
+
+        <section className={classNames(styles.section)}>
+            <div className={styles.about}>
+                <h2 className={styles.about__title}>Про нас</h2>
+                <Image className={styles.about__media} src={"/root/learning/notebook.png"} alt="notebook" width={995 / 3} height={563 / 3}></Image>
+                <p className={styles.about__desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eveniet illo veniam, error consequatur nemo? Possimus, adipisci hic harum doloribus optio in dolorem nam temporibus tenetur, nostrum doloremque maxime nulla?</p>
+            </div>
+        </section>
+    </>
 }

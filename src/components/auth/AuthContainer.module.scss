@@ -1,0 +1,10 @@
+@import "../../vars.scss";
+
+
+.root {
+    border-radius: 15px;
+    border: 1px solid $gray;
+
+    width: 400px;
+    padding: 25px;
+}

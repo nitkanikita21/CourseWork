@@ -1,0 +1,8 @@
+export enum ApiError {
+    TOKEN_NOT_PROVIDED,
+
+    USER_NOT_FOUND,
+    BAD_PASSWORD,
+
+    REG_USER_IS_AVAILABLE,
+}
