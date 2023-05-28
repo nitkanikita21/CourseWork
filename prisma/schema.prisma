@@ -44,6 +44,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Course        Course[]
+  admin         Boolean @default(false)
 }
 
 model VerificationToken {
@@ -52,4 +54,14 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Course {
+  id       String             @id @default(cuid())
+  name     String
+  authorId String
+  author   User               @relation(fields: [authorId], references: [id])
+  content   String?
+
+  @@unique([id, name])
 }

@@ -1,37 +1,3 @@
-/*
-  Warnings:
-
-  - The primary key for the `user` table will be changed. If it partially fails, the table could be left without primary key constraint.
-  - You are about to drop the column `password` on the `user` table. All the data in the column will be lost.
-  - You are about to drop the column `username` on the `user` table. All the data in the column will be lost.
-  - You are about to drop the `course` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `review` table. If the table is not empty, all the data it contains will be lost.
-  - A unique constraint covering the columns `[email]` on the table `User` will be added. If there are existing duplicate values, this will fail.
-
-*/
--- DropForeignKey
-ALTER TABLE `review` DROP FOREIGN KEY `Review_courseId_fkey`;
-
--- DropForeignKey
-ALTER TABLE `review` DROP FOREIGN KEY `Review_userId_fkey`;
-
--- AlterTable
-ALTER TABLE `user` DROP PRIMARY KEY,
-    DROP COLUMN `password`,
-    DROP COLUMN `username`,
-    ADD COLUMN `emailVerified` DATETIME(3) NULL,
-    ADD COLUMN `image` VARCHAR(191) NULL,
-    ADD COLUMN `name` VARCHAR(191) NULL,
-    MODIFY `id` VARCHAR(191) NOT NULL,
-    MODIFY `email` VARCHAR(191) NULL,
-    ADD PRIMARY KEY (`id`);
-
--- DropTable
-DROP TABLE `course`;
-
--- DropTable
-DROP TABLE `review`;
-
 -- CreateTable
 CREATE TABLE `Account` (
     `id` VARCHAR(191) NOT NULL,
@@ -63,6 +29,19 @@ CREATE TABLE `Session` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
+CREATE TABLE `User` (
+    `id` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NULL,
+    `email` VARCHAR(191) NULL,
+    `emailVerified` DATETIME(3) NULL,
+    `image` VARCHAR(191) NULL,
+    `admin` BOOLEAN NOT NULL DEFAULT false,
+
+    UNIQUE INDEX `User_email_key`(`email`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
 CREATE TABLE `VerificationToken` (
     `identifier` VARCHAR(191) NOT NULL,
     `token` VARCHAR(191) NOT NULL,
@@ -72,11 +51,22 @@ CREATE TABLE `VerificationToken` (
     UNIQUE INDEX `VerificationToken_identifier_token_key`(`identifier`, `token`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateIndex
-CREATE UNIQUE INDEX `User_email_key` ON `User`(`email`);
+-- CreateTable
+CREATE TABLE `Course` (
+    `id` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NOT NULL,
+    `authorId` VARCHAR(191) NOT NULL,
+    `content` VARCHAR(191) NULL,
+
+    UNIQUE INDEX `Course_id_name_key`(`id`, `name`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
 ALTER TABLE `Account` ADD CONSTRAINT `Account_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Session` ADD CONSTRAINT `Session_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Course` ADD CONSTRAINT `Course_authorId_fkey` FOREIGN KEY (`authorId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

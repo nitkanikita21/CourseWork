@@ -4,7 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import NextAuth, { AuthOptions } from "next-auth";
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 export const authOptions = {
     adapter: PrismaAdapter(prisma),
@@ -20,7 +20,24 @@ export const authOptions = {
     ],
     pages: {
         signIn: "/auth/signin",
-        signOut: "/auth/signout",
+        signOut: "/auth/signout"
     },
-    secret: "XS9392JrSY7sd/kI+dgdhW/aq9fu0tUBTdVgwMccfVA="
+    callbacks: {
+        session: async ({ session, token }) => {
+            if (session?.user) {
+                session.user.id = token.uid;
+            }
+            session.token = token;
+            return session;
+        },
+        jwt: async ({ user, token }) => {
+            if (user) {
+                token.uid = user.id;
+            }
+            return token;
+        }
+    },
+    session: {
+        strategy: "jwt"
+    }
 } as AuthOptions;

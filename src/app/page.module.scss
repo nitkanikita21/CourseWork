@@ -97,3 +97,21 @@
         height: auto;
     }
 }
+
+
+.loading {
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container {
+        display: grid;
+        gap: 15px;
+        grid-auto-flow: row;
+    }
+    &__centered {
+        justify-self: center;
+    }
+    
+}

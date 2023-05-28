@@ -1,7 +1,7 @@
 "use client";
 
 import { Header } from "@/components/global/Header";
-import globalStyles from "../global.scss";
+import globalStyles from "@/global.module.scss";
 import Footer from "@/components/global/Footer";
 import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
@@ -12,12 +12,12 @@ export default async function RootLayout({
 }: {
     children: React.ReactNode
 }) {
-    return <html lang="en">
+    return <html className={globalStyles.html} lang="en">
         <head>
         </head>
         <body>
             <AuthProvider>
-                <div className={globalStyles.root}>
+                <div>
                     <Header />
                     {children}
                     <Footer />

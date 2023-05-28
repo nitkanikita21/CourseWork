@@ -8,10 +8,17 @@ import Button from "@/components/button/Button";
 
 import { FcGoogle } from "react-icons/fc";
 import { BsGithub } from "react-icons/bs";
+import { redirect, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export default async function RegisterPage(
-    
-) {
+export default async function SignInPage() {
+
+    const { data: session, status } = useSession();
+    const router = useRouter();
+
+    if(status == 'authenticated') {
+        router.push("/protected/user")
+    }
 
     return <>
         <div className={styles.root}>
@@ -19,12 +26,12 @@ export default async function RegisterPage(
                 <div className={styles.container}>
                     <h1>Вхід</h1>
 
-                    <Button onClick={()=>{
+                    <Button onClick={() => {
                         signIn("google", {
                             callbackUrl: "http://localhost:3000/protected/user/"
                         });
                     }}>Вхід через Google <FcGoogle size={16} /></Button>
-                    <Button onClick={()=>{
+                    <Button onClick={() => {
                         signIn("github", {
                             callbackUrl: "http://localhost:3000/protected/user/"
                         });

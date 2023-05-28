@@ -1,17 +1,18 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
-import { useEffect } from "react";
+import Button from "@/components/button/Button";
+import { ToAdminPage } from "@/components/user/ToAdminPage";
+import { AxiosClient } from "@/http/axios";
+import { getCsrfToken, signIn, useSession } from "next-auth/react";
+import { Suspense, useEffect, useState } from "react";
 
-export default function CabinetPage() {
-    const { data: session, status } = useSession({
-        required: true,
-        onUnauthenticated() {
-            signIn();
-        }
-    });
+export default async function CabinetPage() {
+    const session = useSession();
 
-    console.log(session?.user.name);
+    return <>
+        <ToAdminPage/>
+        <h1>{session.data?.user.name}</h1>
+        <p>{session.data?.user.id}</p>
+    </>;
 
-    return <><h1>{session?.user.name}</h1></>;
 }

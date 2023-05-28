@@ -24,6 +24,20 @@ export function Header() {
         </>;
     }
 
+    if (status == "loading") {
+        return <>
+            <div className={styles.root}>
+                <h1 className={styles.logo}>
+                    {"<CodeFactory/>"}
+                </h1>
+                <h1 className={styles.links}>
+
+                </h1>
+
+            </div>
+        </>;
+    }
+
 
     return <>
         <div className={styles.root}>

@@ -13,6 +13,7 @@ export default async function CabinetLayout({
 }: {
     children: React.ReactNode;
 }) {
+
     return (
         <>
             {children}

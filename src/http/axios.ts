@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const AxiosClient = axios.create({
-    baseURL: "https://localhost:3000/api/",
-    timeout: 1000
+    baseURL: "http://localhost:3000/api/",
+    timeout: 15000,
+    withCredentials: true
 });

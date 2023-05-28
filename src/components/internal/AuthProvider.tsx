@@ -4,7 +4,7 @@ import { Session } from "next-auth";
 import { SessionProvider, getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-export default async function AuthProvider({
+export default function AuthProvider({
     children 
 }: {
     children: React.ReactNode
