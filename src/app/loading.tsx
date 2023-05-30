@@ -6,7 +6,7 @@ export default function Loading() {
         <div className={styles.loading__container}>
             <AiFillClockCircle className={styles.loading__centered} size={128}/>
             <h1 className={styles.loading__centered}>Loading</h1>
-            
+
         </div>
-    </div>
+    </div>;
 }

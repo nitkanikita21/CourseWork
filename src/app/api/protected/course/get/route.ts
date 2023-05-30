@@ -2,7 +2,9 @@ import { prisma } from "@/auth/auth";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-    const courses = prisma.course.findMany();
+    const courses = await prisma.course.findMany({
+        include: { author: true }
+    });
 
-    return NextResponse.json({ courses })
+    return NextResponse.json({ courses });
 }

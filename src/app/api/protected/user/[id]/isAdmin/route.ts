@@ -2,20 +2,24 @@ import { authOptions, prisma } from "@/auth/auth";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-type Props = {
-    id: string
-}
-
-export async function GET(request: Request, {id}: Props) {
-    const user = await prisma.user.findFirst({
+export async function GET(
+    request: Request,
+    {
+        params
+    }: {
+        params: { id: string }
+    }
+) {
+    console.log(`is admin; user id: ${params.id}`);
+    const user = await prisma.user.findUnique({
         where: {
-            id
+            id: params.id
         }
-    })
+    });
 
-    if(user == null){
-        return NextResponse.json({error: "User not found"})
+    if (user == null) {
+        return NextResponse.json({ error: "User not found" });
     }
 
-    return NextResponse.json({isAdmin: user.admin})
+    return NextResponse.json({ isAdmin: user.admin });
 }

@@ -1,0 +1,42 @@
+@import "@/vars.scss";
+
+.root {
+    border: 1px solid $gray;
+    border-radius: 5px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    transition: all 250ms;
+
+    padding: 10px;
+
+    &:hover {
+        cursor: pointer;
+        
+
+    }
+}
+.img {
+    margin-bottom: 10px;
+    width: 100%;
+    align-self: center;
+}
+.texts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__name {
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+    &__tags {
+        color: green;
+        margin-bottom: 5px;
+    }
+    &__author{
+        font-size: 20px;
+    }
+}

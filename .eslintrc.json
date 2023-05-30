@@ -4,6 +4,7 @@
     "indent": "off",
     "quote-props": "off",
     "no-undef": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "no-unreachable": "off"
   }
 }

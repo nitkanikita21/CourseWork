@@ -1,0 +1,8 @@
+@import "@/vars.scss";
+
+.root {
+    padding: 35px 0;
+    display: grid;
+    gap: 5px;
+    grid-auto-flow: row;
+}

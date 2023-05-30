@@ -1,18 +1,23 @@
 "use client";
 
-import Button from "@/components/button/Button";
+import CoursesList from "@/components/user/CoursesList";
 import { ToAdminPage } from "@/components/user/ToAdminPage";
-import { AxiosClient } from "@/http/axios";
-import { getCsrfToken, signIn, useSession } from "next-auth/react";
-import { Suspense, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import styles from "./styles.module.scss";
+import UserId from "@/components/user/UserId";
 
 export default async function CabinetPage() {
     const session = useSession();
 
+
     return <>
-        <ToAdminPage/>
-        <h1>{session.data?.user.name}</h1>
-        <p>{session.data?.user.id}</p>
+        <div className={styles.root}>
+            
+            <h1>Вітаю, {session.data?.user.name}!</h1>
+            <p>Ваш ід: <UserId/></p>
+            <ToAdminPage />
+            <CoursesList />
+        </div>
     </>;
 
 }

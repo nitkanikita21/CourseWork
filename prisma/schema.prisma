@@ -45,7 +45,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Course        Course[]
-  admin         Boolean @default(false)
+  admin         Boolean   @default(false)
 }
 
 model VerificationToken {
@@ -57,11 +57,13 @@ model VerificationToken {
 }
 
 model Course {
-  id       String             @id @default(cuid())
-  name     String
+  id       String  @id @default(cuid()) @unique
+  name     String 
   authorId String
-  author   User               @relation(fields: [authorId], references: [id])
-  content   String?
+  author   User    @relation(fields: [authorId], references: [id])
+  content  String? @db.Text
+  image    String?
+  tags     String
 
   @@unique([id, name])
 }

@@ -8,14 +8,14 @@ import { Session } from "next-auth";
 import AuthProvider from "@/components/internal/AuthProvider";
 
 export default async function RootLayout({
-    children, // will be a page or nested layout,
+    children // will be a page or nested layout,
 }: {
     children: React.ReactNode
 }) {
     return <html className={globalStyles.html} lang="en">
         <head>
         </head>
-        <body>
+        <body className={globalStyles.body}>
             <AuthProvider>
                 <div>
                     <Header />

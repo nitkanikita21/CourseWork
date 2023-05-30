@@ -21,7 +21,8 @@ export default function Page() {
             <h2 className={styles.title}>CodeFactory</h2>
             <div className={styles.desc}>
                 <h2 className={styles.desc__title}>
-                    <span>Почни свій шлях в <span className={styles.language}><Typing timeWait={5000} baseText="%text%" texts={["JavaScript", "C#", "Java", "Kotlin", "Python", "Rust", "C++", "Go", "PHP"]} /></span></span>
+                    {/* <span>Почни свій шлях в <span className={styles.language}><Typing timeWait={5000} baseText="%text%" texts={["JavaScript", "C#", "Java", "Kotlin", "Python", "Rust", "C++", "Go", "PHP"]} /></span></span> */}
+                    <p>A?</p>
                 </h2>
 
             </div>

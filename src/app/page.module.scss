@@ -1,29 +1,39 @@
 .section {
     margin: 30px 0;
     height: 800px;
+
+    
 }
 
 .hero {
     display: grid;
-    grid-template-rows: repeat(8, 1fr);
-    height: 800px;
+    grid-auto-flow: row;
+    height: 400px;
     gap: 20px;
     align-items: center;
+
+    @media screen and (max-width: 425px) {
+        & {
+            height: 200px;
+        }
+    }
 }
 
 .title {
-    grid-row: 3;
-
     font-size: 100px;
 
     justify-self: center;
     align-self: center;
+    @media screen and (max-width: 425px) {
+        & {
+            font-size: 30px;
+        }
+    }
 }
 
 .desc {
     display: flex;
     flex-direction: column;
-    grid-row: 4;
 
     &__title {
         font-weight: 300;
@@ -34,7 +44,6 @@
     }
 }
 .hero_btns {
-    grid-row: 5;
     justify-self: center;
     width: 170px;
 }

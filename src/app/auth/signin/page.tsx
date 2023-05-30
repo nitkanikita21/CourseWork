@@ -15,10 +15,7 @@ export default async function SignInPage() {
 
     const { data: session, status } = useSession();
     const router = useRouter();
-
-    if(status == 'authenticated') {
-        router.push("/protected/user")
-    }
+    
 
     return <>
         <div className={styles.root}>

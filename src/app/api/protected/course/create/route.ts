@@ -1,17 +1,22 @@
-import { authOptions, prisma } from "@/auth/auth";
+import { prisma } from "@/auth/auth";
 import { Course } from "@prisma/client";
-import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
     const schema = await request.json() as Course;
     const created = await prisma.course.create({
         data: {
+            image: schema.image,
             name: schema.name,
+            tags: schema.tags,
             content: schema.content,
-            authorId: schema.authorId
+            author: {
+                connect: {
+                    id: schema.authorId
+                }
+            }
         }
-    })
+    });
 
-    return NextResponse.json({ course: created })
+    return NextResponse.json({ course: created });
 }
