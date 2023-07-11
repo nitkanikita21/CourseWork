@@ -37,15 +37,16 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   Course        Course[]
-  admin         Boolean   @default(false)
+  admin         Boolean    @default(false)
+  Comentar      Comentar[]
 }
 
 model VerificationToken {
@@ -57,13 +58,23 @@ model VerificationToken {
 }
 
 model Course {
-  id       String  @id @default(cuid()) @unique
-  name     String 
+  id       String     @id @unique @default(cuid())
+  name     String
   authorId String
-  author   User    @relation(fields: [authorId], references: [id])
-  content  String? @db.Text
+  author   User       @relation(fields: [authorId], references: [id])
+  content  String?    @db.Text
   image    String?
   tags     String
+  Comentar Comentar[]
 
   @@unique([id, name])
+}
+
+model Comentar {
+  id       String @id @unique @default(cuid())
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id])
+  content  String
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId String
 }

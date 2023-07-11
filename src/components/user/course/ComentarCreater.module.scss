@@ -1,0 +1,36 @@
+@import "@/vars.scss";
+
+.root {
+    margin-bottom: 60px;
+
+    
+}
+.md_editor {
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+    height:220px;
+
+    transition: 200ms all;
+    border-radius: 15px;
+    padding: 5px;
+    color: $white;
+    font-size: 20px;
+    background-color: black;
+    border: $gray 1px solid;
+
+    &[type="password"],
+    &[type="text"] {
+        outline: none;
+        &:focus {
+            border: 1px solid green;
+        }
+    }
+}
+.md_container {
+    display: initial;
+}
+
+.preview {
+    margin: 15px 0;
+}

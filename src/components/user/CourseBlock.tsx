@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import styles from "./Course.module.scss";
+import RemoveCourse from "./RemoveCourse";
 
 export default function CourseBlock({
     course
@@ -17,6 +18,7 @@ export default function CourseBlock({
                 <h2 className={styles.texts__name}>{course.name}</h2>
                 <p className={styles.texts__tags}>{JSON.parse(course.tags).join(" ")}</p>
                 <h3 className={styles.texts__author}>{course.author.name}</h3>
+                
             </div>
         </div>
     </>;

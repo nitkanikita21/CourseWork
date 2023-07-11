@@ -29,7 +29,7 @@ export function Header() {
                     router.push("/protected/user");
                 }} >{session.user.name}</Button>
                 <Button className={classNames(styles.mob_menu__btn_menu)} onClick={() => {
-                    signOut();
+                    router.push("/auth/signout");
                 }} >Вихід</Button>
             </> : <>
                 <Button className={classNames(styles.mob_menu__btn_menu)} onClick={() => {
@@ -58,7 +58,7 @@ export function Header() {
                         router.push("/protected/user");
                     }} >{session.user.name}</Button>
                     <Button className={classNames(styles.btn)} onClick={() => {
-                        signOut();
+                        router.push("/auth/signout");
                     }} >Вихід</Button>
                 </div>
 

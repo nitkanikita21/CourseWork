@@ -1,0 +1,24 @@
+@import "@/vars.scss";
+
+.root {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-auto-flow: row;
+    gap: 30px;
+
+}
+
+.block {
+    border: 1px $gray solid;
+    border-radius: 15px;
+    padding: 15px;
+
+    display: grid;
+
+    gap: 10px;
+    grid-auto-flow: row;
+
+    &__author {
+        font-size: 15px;
+    }
+}

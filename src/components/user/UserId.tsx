@@ -12,14 +12,14 @@ export default function UserId() {
         setMode(!mode);
     }
 
-    if (sessionData.status == "loading" || sessionData.status != "authenticated") {
-        return <p>...</p>;
+    if (sessionData.status == "loading" || sessionData.status == "unauthenticated") {
+        return <><div>...</div></>;
     }
+    console.log(sessionData.status, sessionData.data);
 
     if (mode) {
-        return <p className={styles.root} onClick={switchMode}>{sessionData.data?.user.id}</p>;
+        return <><div className={styles.root} onClick={switchMode}>{sessionData.data!!.user.id}</div></>;
     } else {
-        return <div className={styles.root} onClick={switchMode}>Настисність щоб побачити</div>;
+        return <><div className={styles.root} onClick={switchMode}>Настисність щоб побачити</div></>;
     }
-    return <></>;
 }

@@ -1,7 +1,5 @@
 import styles from "./AuthContainer.module.scss";
 
-
-
 export default function AuthContainer({children}: {
     children: React.ReactNode
 }) {

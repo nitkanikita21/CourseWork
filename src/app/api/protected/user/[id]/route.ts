@@ -10,7 +10,7 @@ export async function GET(
         params: { id: string }
     }
 ) {
-    console.log(`is admin; user id: ${params.id}`);
+    
     const user = await prisma.user.findUnique({
         where: {
             id: params.id
@@ -20,6 +20,6 @@ export async function GET(
     if (user == null) {
         return NextResponse.json({ error: "User not found" });
     }
-
-    return NextResponse.json({ isAdmin: user.admin });
+    console.log(user);
+    return NextResponse.json(user);
 }
